@@ -102,7 +102,7 @@ function start() {
 function engineerPrompt() {
     prompt(allQuestions.concat(engineerQuestion, anotherEmployee))
         .then(res => {
-            employees.push(new Engineer(res.name, res.email, res.id, res.github))
+            employees.push(new Engineer(res.name, res.id, res.email, res.github))
             res.anotherEmployee ? start() : writeFile();
         });
 };
@@ -110,7 +110,7 @@ function engineerPrompt() {
 function internPrompt() {
     prompt(allQuestions.concat(internQuestion, anotherEmployee))
         .then(res => {
-            employees.push(new Intern(res.name, res.email, res.id, res.school))
+            employees.push(new Intern(res.name, res.id, res.email, res.school))
             res.anotherEmployee ? start() : writeFile();
         });
 };
@@ -118,7 +118,7 @@ function internPrompt() {
 function managerPrompt() {
     prompt(allQuestions.concat(managerQuestion, anotherEmployee))
         .then(res => {
-            employees.push(new Manager(res.name, res.email, res.id, res.officeNumber))
+            employees.push(new Manager(res.name, res.id, res.email, res.officeNumber))
             res.anotherEmployee ? start() : writeFile();
         });
 };
