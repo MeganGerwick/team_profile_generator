@@ -43,6 +43,16 @@ const employeeQuestions = [
     },
 ];
 
+//question for engineer
+const engineerQuestion = [
+    {
+        type: 'input',
+        name: 'github',
+        message: 'What is their github username?',
+    },
+];
+//question for intern
+//question for manager
 
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
