@@ -7,7 +7,7 @@ const fs = require("fs");
 
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
-
+const prompt = inquirer.createPromptModule();
 const render = require("./lib/htmlRenderer");
 
 
@@ -25,7 +25,7 @@ const openingQuestion = [
     },
 ];
 //questions for all employees
-const employeeQuestions = [
+const allQuestions = [
     {
         type: 'input',
         name: 'name',
@@ -65,11 +65,70 @@ const internQuestion = [
 const managerQuestion = [
     {
         type: 'input',
-        name: 'office-number',
+        name: 'officeNumber',
         message: 'What is their office number?',
     },
 ];
 
+//question to add another employee
+const anotherEmployee = [
+    {
+        type: 'list',
+        name: 'addEmployee',
+        message: 'Would you like to add another employee?',
+        choices: ['Yes', 'No'],
+    },
+];
+
+//function to start application
+function start() {
+    prompt(openingQuestion)
+        .then((res) => {
+            switch (res.role) {
+                case 'Engineer':
+                    engineerPrompt();
+                    break;
+                case 'Intern':
+                    internPrompt();
+                    break;
+                case 'Manager':
+                    managerPrompt();
+                    break;
+            };
+        });
+};
+
+// Prompts for each employee type
+function engineerPrompt() {
+    prompt(allQuestions.concat(engineerQuestion, anotherEmployee))
+        .then(res => {
+            employees.push(new Engineer(res.name, res.email, res.id, res.github))
+            res.anotherEmployee ? start() : writeFile();
+        });
+};
+
+function internPrompt() {
+    prompt(allQuestions.concat(internQuestion, anotherEmployee))
+        .then(res => {
+            employees.push(new Intern(res.name, res.email, res.id, res.school))
+            res.anotherEmployee ? start() : writeFile();
+        });
+};
+
+function managerPrompt() {
+    prompt(allQuestions.concat(managerQuestion, anotherEmployee))
+        .then(res => {
+            employees.push(new Manager(res.name, res.email, res.id, res.officeNumber))
+            res.anotherEmployee ? start() : writeFile();
+        });
+};
+
+
+function writeFile() {
+    fs.writeFileSync(outputPath, render(employees))
+};
+
+start();
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
 // generate and return a block of HTML including templated divs for each employee!
