@@ -15,6 +15,7 @@ const render = require("./lib/htmlRenderer");
 // and to create objects for each team member (using the correct classes as blueprints!)
 const employees = [];
 
+//first question 
 const openingQuestion = [
     {
         type: 'list',
@@ -23,7 +24,24 @@ const openingQuestion = [
         choices: ['Manager', 'Engineer', 'Intern'],
     },
 ];
-
+//questions for all employees
+const employeeQuestions = [
+    {
+        type: 'input',
+        name: 'name',
+        message: "What is the employee's name?",
+    },
+    {
+        type: 'input',
+        name: 'email',
+        message: "What is the employee's email?",
+    },
+    {
+        type: 'input',
+        name: 'id',
+        message: "What is the employee's ID?",
+    },
+];
 
 
 // After the user has input all employees desired, call the `render` function (required
