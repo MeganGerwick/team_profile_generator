@@ -51,7 +51,16 @@ const engineerQuestion = [
         message: 'What is their github username?',
     },
 ];
+
 //question for intern
+const internQuestion = [
+    {
+        type: 'input',
+        name: 'school',
+        message: 'What school do they attend?',
+    },
+];
+
 //question for manager
 
 // After the user has input all employees desired, call the `render` function (required
