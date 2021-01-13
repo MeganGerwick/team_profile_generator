@@ -20,8 +20,8 @@ This app is a software engineering team generator command line application. The 
 ## Video of Working Application
 To see a video of the working application, visit https://www.loom.com/share/5ba56cb2c2324932b2c6c5edc110c700
 
-## Screenshots of Application
-
+## Screenshot of Application
+![Team Generator](https://user-images.githubusercontent.com/69534417/104521309-4388fe80-55c2-11eb-9d65-6c5fbe768144.PNG)
 
 ## Contact Information
 If you have questions about this repository, contact Megan Gerwick at https://github.com/MeganGerwick or email at mgerwick@gmail.com.
