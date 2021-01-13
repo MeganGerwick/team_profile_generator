@@ -100,27 +100,58 @@ function start() {
 
 // Prompts for each employee type
 function engineerPrompt() {
-    prompt(allQuestions.concat(engineerQuestion, anotherEmployee))
+    prompt(allQuestions, engineerQuestion)
         .then(res => {
-            employees.push(new Engineer(res.name, res.id, res.email, res.github))
-            res.anotherEmployee ? start() : writeFile();
+            employees.push(new Engineer(res.name, res.id, res.email, res.github));
+            prompt(anotherEmployee)
+                .then((answer) => {
+                    console.log(answer);
+                    if (answer.addEmployee === 'Yes') {
+                        start();
+                    } else {
+                        writeFile();
+                    };
+                });
+            ;
         });
+    ;
 };
 
+
 function internPrompt() {
-    prompt(allQuestions.concat(internQuestion, anotherEmployee))
+    prompt(allQuestions, internQuestion)
         .then(res => {
-            employees.push(new Intern(res.name, res.id, res.email, res.school))
-            res.anotherEmployee ? start() : writeFile();
+            employees.push(new Intern(res.name, res.id, res.email, res.school));
+            prompt(anotherEmployee)
+                .then((answer) => {
+                    console.log(answer);
+                    if (answer.addEmployee === 'Yes') {
+                        start();
+                    } else {
+                        writeFile();
+                    };
+                });
+            ;
         });
+    ;
 };
 
 function managerPrompt() {
-    prompt(allQuestions.concat(managerQuestion, anotherEmployee))
+    prompt(allQuestions, managerQuestion)
         .then(res => {
-            employees.push(new Manager(res.name, res.id, res.email, res.officeNumber))
-            res.anotherEmployee ? start() : writeFile();
+            employees.push(new Manager(res.name, res.id, res.email, res.officeNumber));
+            prompt(anotherEmployee)
+                .then((answer) => {
+                    console.log(answer);
+                    if (answer.addEmployee === 'Yes') {
+                        start();
+                    } else {
+                        writeFile();
+                    };
+                });
+            ;
         });
+    ;
 };
 
 
@@ -148,3 +179,14 @@ start();
 // for further information. Be sure to test out each class and verify it generates an
 // object with the correct structure and methods. This structure will be crucial in order
 // for the provided `render` function to work! ```
+
+// prompt(allQuestions.concat(engineerQuestion, anotherEmployee))
+            //     .then(res => {
+            //         employees.push(new Engineer(res.name, res.id, res.email, res.github))
+            //             .then(function (res) {
+            //                 if (res.anotherEmployee === "Yes") {
+            //                     start();
+            //                 } else writeFile();
+            //             });
+            //         ;
+            //     });
